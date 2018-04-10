@@ -1,7 +1,6 @@
 import os
 import sys
 
-import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -15,7 +14,6 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format='DEBUG: %(mes
 logging.getLogger().disabled = True
 
 
-aelin_email_message = sys.argv[-1]
 aelin_email_location = os.getcwd()
 
 
@@ -29,11 +27,26 @@ msg['To'] = toaddr
 msg['Subject'] = "Sent from aelin_email"
 
 
+haveMessage = 0
+
+
+message_indicator_Index = -1 if "-m" not in sys.argv else sys.argv.index("-m")
+file_indicator_Index = -1 if "-m" not in sys.argv else sys.argv.index("-f")
+
+# if -m added
+if (message_indicator_Index != -1): 
+    aelin_email_message = " ".join(sys.argv[message_indicator_Index+1:])
+else: 
+    aelin_email_message = sys.argv[-1]
+    message_indicator_Index = len(sys.argv)-1
+
+body = aelin_email_message
+
 
 
 # Attach files
 if sys.argv[1] == "-f": 
-    for i in range(2, len(sys.argv)-1): 
+    for i in range(2, message_indicator_Index): 
 
         add_cwd = -1
 
@@ -81,7 +94,6 @@ elif len(sys.argv) > 2:
 
 
  
-body = aelin_email_message
  
 msg.attach(MIMEText(body, 'plain'))
 server = smtplib.SMTP('smtp.gmail.com', 587)
