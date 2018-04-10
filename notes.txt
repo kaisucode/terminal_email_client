@@ -1,0 +1,16 @@
+
+am "lolllll"
+am -f file_name	"the message"
+am -f file_name file_name2	"the message"
+
+
+Features to add: 
+am -f file_name
+am -f file_name -m the message
+
+
+
+http://naelshiab.com/tutorial-send-email-python/
+https://stackoverflow.com/questions/47811514/send-an-email-in-python
+
+
