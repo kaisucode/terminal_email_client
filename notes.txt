@@ -1,14 +1,15 @@
 
 am the_message
 am "the message"
+am -f file_name
 am -f file_name	"the message"
 am -f file_name file_name2	"the message"
 am -f file_name -m the message
+am -f file_name file_name2 -m the message
 
 
 Features to add: 
-am -f file_name
-am the message
+?? am the message
 
 Features to test: 
 
