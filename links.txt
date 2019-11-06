@@ -1,0 +1,4 @@
+
+http://naelshiab.com/tutorial-send-email-python/
+https://stackoverflow.com/questions/47811514/send-an-email-in-python
+
